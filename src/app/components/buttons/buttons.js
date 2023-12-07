@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { ButtonStyledGroup, ButtonStyled } from './styled';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import { ButtonStyledGroup, ButtonStyled } from "./styled";
 
-const Button = (props: any) => {
+const Button = (props) => {
   const {
     type,
     shape,
@@ -52,24 +52,24 @@ const Button = (props: any) => {
 };
 
 Button.defaultProps = {
-  type: 'default',
+  type: "default",
 };
 
 Button.propTypes = {
   type: PropTypes.oneOf([
-    'primary',
-    'secondary',
-    'success',
-    'info',
-    'warning',
-    'danger',
-    'link',
-    'dark',
-    'light',
-    'white',
-    'dashed',
-    'error',
-    'default',
+    "primary",
+    "secondary",
+    "success",
+    "info",
+    "warning",
+    "danger",
+    "link",
+    "dark",
+    "light",
+    "white",
+    "dashed",
+    "error",
+    "default",
   ]),
   shape: PropTypes.string,
   icon: PropTypes.string,
@@ -83,10 +83,14 @@ Button.propTypes = {
   load: PropTypes.bool,
   ghost: PropTypes.bool,
   onClick: PropTypes.any,
-  children: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.node]),
+  children: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.string,
+    PropTypes.node,
+  ]),
 };
 
-const BtnGroup = ({ children }: any) => {
+const BtnGroup = ({ children }) => {
   return <ButtonStyledGroup>{children}</ButtonStyledGroup>;
 };
 
