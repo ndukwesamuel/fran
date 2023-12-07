@@ -1,23 +1,25 @@
 /* eslint-disable camelcase */
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link, NavLink } from 'react-router-dom';
-import FeatherIcon from 'feather-icons-react';
-import { Table } from 'antd';
-import { RevenueTableWrapper } from '../../style';
-import { ChartjsLineChart } from '../../../../components/charts/chartjs';
-import { generatedFilterData, generatedGetData } from '../../../../redux/chartContent/actionCreator';
-import { Cards } from '../../../../components/cards/frame/cards-frame';
-
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import FeatherIcon from "feather-icons-react";
+import { Table } from "antd";
+import { RevenueTableWrapper } from "../../style";
+import { ChartjsLineChart } from "../../../components/charts/chartjs";
+import {
+  generatedFilterData,
+  generatedGetData,
+} from "../../../../redux/chartContent/actionCreator";
+import { Cards } from "../../../components/cards/frame/cards-frame";
+import Link from "next/link";
 function RevenueGenerated() {
   const dispatch = useDispatch();
-  const { generatedState } = useSelector(state => {
+  const { generatedState } = useSelector((state) => {
     return {
       generatedState: state.chartContent.generatedData,
     };
   });
   const [state, setState] = useState({
-    generated: 'year',
+    generated: "year",
   });
   useEffect(() => {
     if (generatedGetData) {
@@ -25,7 +27,7 @@ function RevenueGenerated() {
     }
   }, [dispatch]);
 
-  const handleActiveChangeGenerated = value => {
+  const handleActiveChangeGenerated = (value) => {
     setState({
       ...state,
       generated: value,
@@ -35,36 +37,36 @@ function RevenueGenerated() {
 
   const revenueColumns = [
     {
-      title: 'Name of Source',
-      dataIndex: 'name',
-      key: 'name',
+      title: "Name of Source",
+      dataIndex: "name",
+      key: "name",
     },
     {
-      title: 'Visitors',
-      dataIndex: 'visitors',
-      key: 'visitors',
+      title: "Visitors",
+      dataIndex: "visitors",
+      key: "visitors",
     },
     {
-      title: 'Page View',
-      dataIndex: 'page_View',
-      key: 'page_View',
+      title: "Page View",
+      dataIndex: "page_View",
+      key: "page_View",
     },
     {
-      title: 'Revenue',
-      dataIndex: 'revenue',
-      key: 'revenue',
+      title: "Revenue",
+      dataIndex: "revenue",
+      key: "revenue",
     },
     {
-      title: 'Trend',
-      dataIndex: 'trend',
-      key: 'trend',
+      title: "Trend",
+      dataIndex: "trend",
+      key: "trend",
       width: 120,
     },
   ];
 
   const revenueData = [];
   if (generatedState !== null)
-    generatedState.map(value => {
+    generatedState.map((value) => {
       const { key, name, visitors, page_View, revenue, trend } = value;
 
       return revenueData.push({
@@ -75,7 +77,7 @@ function RevenueGenerated() {
         revenue,
         trend: (
           <ChartjsLineChart
-            labels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']}
+            labels={["Jan", "Feb", "Mar", "Apr", "May", "Jun"]}
             datasets={[
               {
                 data: trend.data,
@@ -136,18 +138,39 @@ function RevenueGenerated() {
           isbutton={
             <div className="card-nav">
               <ul>
-                <li className={state.generated === 'week' ? 'active' : 'deactivate'}>
-                  <Link onClick={() => handleActiveChangeGenerated('week')} to="#">
+                <li
+                  className={
+                    state.generated === "week" ? "active" : "deactivate"
+                  }
+                >
+                  <Link
+                    onClick={() => handleActiveChangeGenerated("week")}
+                    href="#"
+                  >
                     Week
                   </Link>
                 </li>
-                <li className={state.generated === 'month' ? 'active' : 'deactivate'}>
-                  <Link onClick={() => handleActiveChangeGenerated('month')} to="#">
+                <li
+                  className={
+                    state.generated === "month" ? "active" : "deactivate"
+                  }
+                >
+                  <Link
+                    onClick={() => handleActiveChangeGenerated("month")}
+                    href="#"
+                  >
                     Month
                   </Link>
                 </li>
-                <li className={state.generated === 'year' ? 'active' : 'deactivate'}>
-                  <Link onClick={() => handleActiveChangeGenerated('year')} to="#">
+                <li
+                  className={
+                    state.generated === "year" ? "active" : "deactivate"
+                  }
+                >
+                  <Link
+                    onClick={() => handleActiveChangeGenerated("year")}
+                    href="#"
+                  >
                     Year
                   </Link>
                 </li>
@@ -156,33 +179,37 @@ function RevenueGenerated() {
           }
           more={
             <>
-              <NavLink to="#">
+              <Link href="#">
                 <FeatherIcon size={16} icon="printer" />
                 <span>Printer</span>
-              </NavLink>
-              <NavLink to="#">
+              </Link>
+              <Link href="#">
                 <FeatherIcon size={16} icon="book-open" />
                 <span>PDF</span>
-              </NavLink>
-              <NavLink to="#">
+              </Link>
+              <Link href="#">
                 <FeatherIcon size={16} icon="file-text" />
                 <span>Google Sheets</span>
-              </NavLink>
-              <NavLink to="#">
+              </Link>
+              <Link href="#">
                 <FeatherIcon size={16} icon="x" />
                 <span>Excel (XLSX)</span>
-              </NavLink>
-              <NavLink to="#">
+              </Link>
+              <Link href="#">
                 <FeatherIcon size={16} icon="file" />
                 <span>CSV</span>
-              </NavLink>
+              </Link>
             </>
           }
           title="Source Of Revenue Generated"
           size="large"
         >
           <div className="table-bordered revenue-table table-responsive">
-            <Table columns={revenueColumns} dataSource={revenueData} pagination={false} />
+            <Table
+              columns={revenueColumns}
+              dataSource={revenueData}
+              pagination={false}
+            />
           </div>
         </Cards>
       </div>

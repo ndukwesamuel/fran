@@ -23,6 +23,8 @@
     "react-chartjs-2": "^2.11.1",
     "chart.js": "2.9.4",
     "styled-components": "^5.3.6",
+    "react-simple-maps": "^3.0.0",
+    "react-tooltip": "^4.2.21",
     "react-date-range": "^1.4.0"
   },
   "devDependencies": {

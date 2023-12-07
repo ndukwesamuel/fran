@@ -1,25 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { Table } from 'antd';
-import { ComposableMap, Geographies, Geography, Marker, ZoomableGroup } from 'react-simple-maps';
-import ReactTooltip from 'react-tooltip';
-import { LocationMapWrapper } from '../../style';
-import { locationGetData, locationFilterData } from '../../../../redux/chartContent/actionCreator';
-import { Cards } from '../../../../components/cards/frame/cards-frame';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Table } from "antd";
+import Link from "next/link";
+import {
+  ComposableMap,
+  Geographies,
+  Geography,
+  Marker,
+  ZoomableGroup,
+} from "react-simple-maps";
+import ReactTooltip from "react-tooltip";
+import { LocationMapWrapper } from "../../style";
+import {
+  locationGetData,
+  locationFilterData,
+} from "../../../../redux/chartContent/actionCreator";
+import { Cards } from "../../../components/cards/frame/cards-frame";
 
-const geoUrl = 'https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json';
+const geoUrl =
+  "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json";
 
 function SalesByLocation() {
   const dispatch = useDispatch();
   const { locationState, topMenu } = useSelector((state) => {
     return {
       locationState: state.chartContent.locationData,
-      topMenu: state.ChangeLayoutMode.topMenu,
+      topMenu: state?.ChangeLayoutMode?.topMenu,
     };
   });
   const [state, setState] = useState({
-    location: 'today',
+    location: "today",
   });
   useEffect(() => {
     if (locationGetData) {
@@ -50,24 +60,24 @@ function SalesByLocation() {
 
   const locationColumns = [
     {
-      title: 'Top Location',
-      dataIndex: 'location',
-      key: 'location',
+      title: "Top Location",
+      dataIndex: "location",
+      key: "location",
     },
     {
-      title: 'Order',
-      dataIndex: 'order',
-      key: 'order',
+      title: "Order",
+      dataIndex: "order",
+      key: "order",
     },
     {
-      title: 'Revenue',
-      dataIndex: 'revenue',
-      key: 'revenue',
+      title: "Revenue",
+      dataIndex: "revenue",
+      key: "revenue",
     },
   ];
 
   const [position, setPosition] = useState({ coordinates: [0, 0], zoom: 1 });
-  const [content, setContent] = useState('');
+  const [content, setContent] = useState("");
   const rounded = (num) => {
     if (num > 1000000000) {
       return `${Math.round(num / 100000000) / 10}Bn`;
@@ -94,14 +104,14 @@ function SalesByLocation() {
   const markers = [
     {
       markerOffset: -30,
-      name: 'Buenos Aires',
+      name: "Buenos Aires",
       coordinates: [-58.3816, -34.6037],
     },
-    { markerOffset: 15, name: 'La Paz', coordinates: [-68.1193, -16.4897] },
-    { markerOffset: 15, name: 'Quito', coordinates: [-78.4678, -0.1807] },
-    { markerOffset: -30, name: 'Georgetown', coordinates: [-58.1551, 6.8013] },
-    { markerOffset: 15, name: 'Caracas', coordinates: [-66.9036, 10.4806] },
-    { markerOffset: 15, name: 'Lima', coordinates: [-77.0428, -12.0464] },
+    { markerOffset: 15, name: "La Paz", coordinates: [-68.1193, -16.4897] },
+    { markerOffset: 15, name: "Quito", coordinates: [-78.4678, -0.1807] },
+    { markerOffset: -30, name: "Georgetown", coordinates: [-58.1551, 6.8013] },
+    { markerOffset: 15, name: "Caracas", coordinates: [-66.9036, 10.4806] },
+    { markerOffset: 15, name: "Lima", coordinates: [-77.0428, -12.0464] },
   ];
 
   return (
@@ -111,23 +121,51 @@ function SalesByLocation() {
           isbutton={
             <div className="card-nav">
               <ul>
-                <li className={state.location === 'today' ? 'active' : 'deactivate'}>
-                  <Link onClick={() => handleActiveChangeLocation('today')} to="#">
+                <li
+                  className={
+                    state.location === "today" ? "active" : "deactivate"
+                  }
+                >
+                  <Link
+                    onClick={() => handleActiveChangeLocation("today")}
+                    href="#"
+                  >
                     Today
                   </Link>
                 </li>
-                <li className={state.location === 'week' ? 'active' : 'deactivate'}>
-                  <Link onClick={() => handleActiveChangeLocation('week')} to="#">
+                <li
+                  className={
+                    state.location === "week" ? "active" : "deactivate"
+                  }
+                >
+                  <Link
+                    onClick={() => handleActiveChangeLocation("week")}
+                    href="#"
+                  >
                     Week
                   </Link>
                 </li>
-                <li className={state.location === 'month' ? 'active' : 'deactivate'}>
-                  <Link onClick={() => handleActiveChangeLocation('month')} to="#">
+                <li
+                  className={
+                    state.location === "month" ? "active" : "deactivate"
+                  }
+                >
+                  <Link
+                    onClick={() => handleActiveChangeLocation("month")}
+                    href="#"
+                  >
                     Month
                   </Link>
                 </li>
-                <li className={state.location === 'year' ? 'active' : 'deactivate'}>
-                  <Link onClick={() => handleActiveChangeLocation('year')} to="#">
+                <li
+                  className={
+                    state.location === "year" ? "active" : "deactivate"
+                  }
+                >
+                  <Link
+                    onClick={() => handleActiveChangeLocation("year")}
+                    href="#"
+                  >
                     Year
                   </Link>
                 </li>
@@ -142,10 +180,20 @@ function SalesByLocation() {
               <ReactTooltip>{content}</ReactTooltip>
               <ComposableMap
                 data-tip=""
-                projectionConfig={!topMenu ? { scale: window.innerWidth <= 479 ? 140 : 115 } : { scale: 100 }}
-                viewBox={`40, ${!topMenu ? (window.innerWidth <= 479 ? 130 : 140) : 160}, 800, 290`}
+                projectionConfig={
+                  !topMenu
+                    ? { scale: window.innerWidth <= 479 ? 140 : 115 }
+                    : { scale: 100 }
+                }
+                viewBox={`40, ${
+                  !topMenu ? (window.innerWidth <= 479 ? 130 : 140) : 160
+                }, 800, 290`}
               >
-                <ZoomableGroup zoom={position.zoom} center={position.coordinates} onMoveEnd={handleMoveEnd}>
+                <ZoomableGroup
+                  zoom={position.zoom}
+                  center={position.coordinates}
+                  onMoveEnd={handleMoveEnd}
+                >
                   <Geographies geography={geoUrl}>
                     {({ geographies }) =>
                       geographies.map((geo) => (
@@ -157,22 +205,22 @@ function SalesByLocation() {
                             setContent(`${NAME} — ${rounded(POP_EST)}`);
                           }}
                           onMouseLeave={() => {
-                            setContent('');
+                            setContent("");
                           }}
                           fill="#DDD"
                           stroke="#FFF"
                           style={{
                             default: {
-                              fill: '#E3E6EF',
-                              outline: 'none',
+                              fill: "#E3E6EF",
+                              outline: "none",
                             },
                             hover: {
-                              fill: 'rgb(95, 99, 242)',
-                              outline: 'none',
+                              fill: "rgb(95, 99, 242)",
+                              outline: "none",
                             },
                             pressed: {
-                              fill: '#E42',
-                              outline: 'none',
+                              fill: "#E42",
+                              outline: "none",
                             },
                           }}
                         />
@@ -181,7 +229,13 @@ function SalesByLocation() {
                   </Geographies>
                   {markers.map(({ name, coordinates }) => (
                     <Marker key={name} coordinates={coordinates}>
-                      <g id="Ellipse_33" data-name="Ellipse 33" fill="#fff" stroke="#5f63f2" strokeWidth="6">
+                      <g
+                        id="Ellipse_33"
+                        data-name="Ellipse 33"
+                        fill="#fff"
+                        stroke="#5f63f2"
+                        strokeWidth="6"
+                      >
                         <circle cx="8" cy="8" r="8" stroke="none" />
                         <circle cx="8" cy="8" r="6" fill="none" />
                       </g>
@@ -221,7 +275,11 @@ function SalesByLocation() {
           </div>
 
           <div className="location-table">
-            <Table columns={locationColumns} dataSource={locationData} pagination={false} />
+            <Table
+              columns={locationColumns}
+              dataSource={locationData}
+              pagination={false}
+            />
           </div>
         </Cards>
       </div>

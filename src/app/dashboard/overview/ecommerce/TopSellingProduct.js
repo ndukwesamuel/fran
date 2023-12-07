@@ -1,19 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { Table } from 'antd';
-import { topSaleGetData, topSaleFilterData } from '../../../../redux/chartContent/actionCreator';
-import { Cards } from '../../../../components/cards/frame/cards-frame';
-
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Table } from "antd";
+import {
+  topSaleGetData,
+  topSaleFilterData,
+} from "../../../../redux/chartContent/actionCreator";
+import { Cards } from "../../../components/cards/frame/cards-frame";
+import Link from "next/link";
 function TopSellingProduct() {
   const dispatch = useDispatch();
-  const { topSaleState } = useSelector(state => {
+  const { topSaleState } = useSelector((state) => {
     return {
       topSaleState: state.chartContent.topSaleData,
     };
   });
   const [state, setState] = useState({
-    products: 'year',
+    products: "year",
   });
   useEffect(() => {
     if (topSaleGetData) {
@@ -21,7 +23,7 @@ function TopSellingProduct() {
     }
   }, [dispatch]);
 
-  const handleActiveChangeProducts = value => {
+  const handleActiveChangeProducts = (value) => {
     setState({
       ...state,
       products: value,
@@ -31,7 +33,7 @@ function TopSellingProduct() {
 
   const sellingData = [];
   if (topSaleState !== null) {
-    topSaleState.map(value => {
+    topSaleState.map((value) => {
       const { key, name, price, sold, revenue } = value;
       return sellingData.push({
         key,
@@ -45,24 +47,24 @@ function TopSellingProduct() {
 
   const sellingColumns = [
     {
-      title: 'Product Name',
-      dataIndex: 'name',
-      key: 'name',
+      title: "Product Name",
+      dataIndex: "name",
+      key: "name",
     },
     {
-      title: 'Price',
-      dataIndex: 'price',
-      key: 'price',
+      title: "Price",
+      dataIndex: "price",
+      key: "price",
     },
     {
-      title: 'Sold',
-      dataIndex: 'sold',
-      key: 'sold',
+      title: "Sold",
+      dataIndex: "sold",
+      key: "sold",
     },
     {
-      title: 'Revenue',
-      dataIndex: 'revenue',
-      key: 'revenue',
+      title: "Revenue",
+      dataIndex: "revenue",
+      key: "revenue",
     },
   ];
 
@@ -72,23 +74,43 @@ function TopSellingProduct() {
         isbutton={
           <div className="card-nav">
             <ul>
-              <li className={state.products === 'today' ? 'active' : 'deactivate'}>
-                <Link onClick={() => handleActiveChangeProducts('today')} to="#">
+              <li
+                className={state.products === "today" ? "active" : "deactivate"}
+              >
+                <Link
+                  onClick={() => handleActiveChangeProducts("today")}
+                  href="#"
+                >
                   Today
                 </Link>
               </li>
-              <li className={state.products === 'week' ? 'active' : 'deactivate'}>
-                <Link onClick={() => handleActiveChangeProducts('week')} to="#">
+              <li
+                className={state.products === "week" ? "active" : "deactivate"}
+              >
+                <Link
+                  onClick={() => handleActiveChangeProducts("week")}
+                  href="#"
+                >
                   Week
                 </Link>
               </li>
-              <li className={state.products === 'month' ? 'active' : 'deactivate'}>
-                <Link onClick={() => handleActiveChangeProducts('month')} to="#">
+              <li
+                className={state.products === "month" ? "active" : "deactivate"}
+              >
+                <Link
+                  onClick={() => handleActiveChangeProducts("month")}
+                  href="#"
+                >
                   Month
                 </Link>
               </li>
-              <li className={state.products === 'year' ? 'active' : 'deactivate'}>
-                <Link onClick={() => handleActiveChangeProducts('year')} to="#">
+              <li
+                className={state.products === "year" ? "active" : "deactivate"}
+              >
+                <Link
+                  onClick={() => handleActiveChangeProducts("year")}
+                  href="#"
+                >
                   Year
                 </Link>
               </li>
@@ -100,7 +122,11 @@ function TopSellingProduct() {
         bodypadding="0px"
       >
         <div className="table-bordered top-seller-table table-responsive">
-          <Table columns={sellingColumns} dataSource={sellingData} pagination={false} />
+          <Table
+            columns={sellingColumns}
+            dataSource={sellingData}
+            pagination={false}
+          />
         </div>
       </Cards>
     </div>

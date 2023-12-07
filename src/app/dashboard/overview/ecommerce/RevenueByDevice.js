@@ -1,22 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { Spin } from 'antd';
-import { RevenueChartWrapper } from '../../style';
-import { ChartjsDonutChart2 } from '../../../../components/charts/chartjs';
-import { deviceGetData, deviceFilterData } from '../../../../redux/chartContent/actionCreator';
-import { Cards } from '../../../../components/cards/frame/cards-frame';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+// import { Link } from 'react-router-dom';
+import Link from "next/link";
+
+import { Spin } from "antd";
+import { RevenueChartWrapper } from "../../style";
+import { ChartjsDonutChart2 } from "../../../components/charts/chartjs";
+import {
+  deviceGetData,
+  deviceFilterData,
+} from "../../../../redux/chartContent/actionCreator";
+import { Cards } from "../../../components/cards/frame/cards-frame";
 
 function RevenueByDevice() {
   const dispatch = useDispatch();
-  const { deviceState, dvIsLoading } = useSelector(state => {
+  const { deviceState, dvIsLoading } = useSelector((state) => {
     return {
       deviceState: state.chartContent.deviceData,
       dvIsLoading: state.chartContent.dvLoading,
     };
   });
   const [state, setState] = useState({
-    device: 'year',
+    device: "year",
   });
 
   useEffect(() => {
@@ -25,7 +30,7 @@ function RevenueByDevice() {
     }
   }, [dispatch]);
 
-  const handleActiveChangeDevice = value => {
+  const handleActiveChangeDevice = (value) => {
     setState({
       ...state,
       device: value,
@@ -40,23 +45,43 @@ function RevenueByDevice() {
           isbutton={
             <div className="card-nav">
               <ul>
-                <li className={state.device === 'today' ? 'active' : 'deactivate'}>
-                  <Link onClick={() => handleActiveChangeDevice('today')} to="#">
+                <li
+                  className={state.device === "today" ? "active" : "deactivate"}
+                >
+                  <Link
+                    onClick={() => handleActiveChangeDevice("today")}
+                    href="#"
+                  >
                     Today
                   </Link>
                 </li>
-                <li className={state.device === 'week' ? 'active' : 'deactivate'}>
-                  <Link onClick={() => handleActiveChangeDevice('week')} to="#">
+                <li
+                  className={state.device === "week" ? "active" : "deactivate"}
+                >
+                  <Link
+                    onClick={() => handleActiveChangeDevice("week")}
+                    href="#"
+                  >
                     Week
                   </Link>
                 </li>
-                <li className={state.device === 'month' ? 'active' : 'deactivate'}>
-                  <Link onClick={() => handleActiveChangeDevice('month')} to="#">
+                <li
+                  className={state.device === "month" ? "active" : "deactivate"}
+                >
+                  <Link
+                    onClick={() => handleActiveChangeDevice("month")}
+                    href="#"
+                  >
                     Month
                   </Link>
                 </li>
-                <li className={state.device === 'year' ? 'active' : 'deactivate'}>
-                  <Link onClick={() => handleActiveChangeDevice('year')} to="#">
+                <li
+                  className={state.device === "year" ? "active" : "deactivate"}
+                >
+                  <Link
+                    onClick={() => handleActiveChangeDevice("year")}
+                    href="#"
+                  >
                     Year
                   </Link>
                 </li>
@@ -73,11 +98,11 @@ function RevenueByDevice() {
           ) : (
             <div className="revenue-doughnut">
               <ChartjsDonutChart2
-                labels={['Desktop', 'Mobile', 'Tablets']}
+                labels={["Desktop", "Mobile", "Tablets"]}
                 datasets={[
                   {
                     data: deviceState,
-                    backgroundColor: ['#20C997', '#5F63F2', '#FA8B0C'],
+                    backgroundColor: ["#20C997", "#5F63F2", "#FA8B0C"],
                   },
                 ]}
               />
