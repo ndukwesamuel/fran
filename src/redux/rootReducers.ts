@@ -13,7 +13,7 @@ import counterSlice from './features/counterSlice';
 // import { headerSearchReducer } from './headerSearch/reducers';
 // import orderReducer from './orders/reducers';
 // import galleryReducer from './gallary/reducers';
-// import chartContentReducer from './chartContent/reducers';
+import chartContentReducer from './chartContent/reducers';
 // import { emailReducer, SingleEmailReducer } from './email/reducers';
 // import { productReducer, SingleProductReducer } from './product/reducers';
 // import { chatReducer, SingleChatReducer, groupChatReducer, SingleChatGroupReducer } from './chat/reducers';
@@ -32,7 +32,7 @@ import counterSlice from './features/counterSlice';
 // import firebaseAuth from './firebase/auth/reducers';
 
 const rootReducers = combineReducers({
-  counterSlice:counterSlice
+  counterSlice:counterSlice,
 //   fb: firebaseReducer,
 //   fs: firestoreReducer,
 //   themeUsers: themeUsersReducer,
@@ -57,7 +57,7 @@ const rootReducers = combineReducers({
 //   projects: projectReducer,
 //   project: SingleProjectReducer,
 //   ChangeLayoutMode,
-//   chartContent: chartContentReducer,
+  chartContent: chartContentReducer,
 //   crud: fsCrudReducer,
 //   singleCrud: fsSingleCrudReducer,
 //   cart: cartData,
