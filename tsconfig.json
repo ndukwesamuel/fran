@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/components/cards/frame/cards-frame.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/components/cards/frame/cards-frame.js", "src/app/components/buttons/styled.js", "src/app/components/buttons/buttons.js"],
   "exclude": ["node_modules"]
 }

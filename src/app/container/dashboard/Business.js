@@ -19,7 +19,7 @@ const AccountGroup = lazy(() => import("./overview/business/AccountGroup"));
 function Business() {
   return (
     <>
-      {/* <PageHeader
+      <PageHeader
         ghost
         title="Finance Dashboard"
         buttons={[
@@ -33,7 +33,7 @@ function Business() {
             </Button>
           </div>,
         ]}
-      /> */}
+      />
       <Main>
         <Row gutter={25}>
           <Col xxl={12} xs={24}>
