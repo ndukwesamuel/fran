@@ -1,7 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import propTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React from "react";
+import styled from "styled-components";
+import propTypes from "prop-types";
+// import { Link } from 'react-router-dom';
+import Link from "next/link";
 
 const CardWrapper = styled.figure`
   background: #fff;
@@ -16,10 +17,10 @@ const CardWrapper = styled.figure`
     }
     p {
       line-height: 1.79;
-      color: ${({ theme }) => theme['gray-color']};
+      color: ${({ theme }) => theme["gray-color"]};
     }
     a {
-      color: ${({ theme }) => theme['primary-color']};
+      color: ${({ theme }) => theme["primary-color"]};
       font-size: 15px;
       font-weight: 600;
     }
@@ -34,7 +35,7 @@ const SampleCardTwo = ({ item }) => {
       <figcaption>
         <h2>{title}</h2>
         <p>{content}</p>
-        <Link to="#">Learn More</Link>
+        <Link href="#">Learn More</Link>
       </figcaption>
     </CardWrapper>
   );
@@ -47,10 +48,10 @@ SampleCardTwo.propTypes = {
 SampleCardTwo.defaultProps = {
   item: {
     id: 1,
-    title: 'Creative Planning',
+    title: "Creative Planning",
     content:
-      'Lorem Ipsum is simply dummy text of the printer took a galley of type and scrambled and typesetting industry.',
-    img: 'static/img/icon/strategy.svg',
+      "Lorem Ipsum is simply dummy text of the printer took a galley of type and scrambled and typesetting industry.",
+    img: "static/img/icon/strategy.svg",
   },
 };
 

@@ -2,12 +2,21 @@
 import Image from 'next/image'
 import { useSelector } from 'react-redux';
 import { Row, Col, Skeleton } from 'antd';
+// import FeatherIcon from 'feather-icons-react';
 
 import { Main } from "../styled"
 import { Suspense, lazy } from 'react';
 import { Cards } from "../components/cards/frame/cards-frame"
+import { PageHeader } from "../components/page-headers/page-headers"
+
+// '../ ../../ ../../components/page-headers/page-headers';
+
 // import SocialMediaOverview from "./overview/index/SocialMediaOverview"
 // import FacebookOverview from "./overview/index/FacebookOverview"
+import { ShareButtonPageHeader } from '../components/buttons/share-button/share-button';
+import { ExportButtonPageHeader } from '../components/buttons/export-button/export-button';
+import { CalendarButtonPageHeader } from "../components/buttons/calendar-button/calendar-button"
+import { Button } from '../components/buttons/buttons';
 
 const SocialMediaOverview = lazy(() => import('./overview/index/SocialMediaOverview'));
 const FacebookOverview = lazy(() => import('./overview/index/FacebookOverview'));
@@ -25,7 +34,21 @@ export default function Home() {
   return (
     <>
 
-
+      {/* <PageHeader
+        ghost
+        title="Social Media Dashboard"
+        buttons={[
+          <div key="6" className="page-header-actions">
+            <CalendarButtonPageHeader key="1" />
+            <ExportButtonPageHeader key="2" />
+            <ShareButtonPageHeader key="3" />
+            <Button size="small" key="4" type="primary">
+              <FeatherIcon icon="plus" size={14} />
+              Add New
+            </Button>
+          </div>,
+        ]}
+      /> */}
 
       <Main>
         <p>sam</p>

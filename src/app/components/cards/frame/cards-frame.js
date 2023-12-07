@@ -37,7 +37,7 @@ const Cards = (props) => {
             <>
               {more && (
                 <Dropdown content={more} placement="bottomCenter">
-                  <Link to="#">
+                  <Link href="#">
                     {!moreText ? (
                       <FeatherIcon icon="more-horizontal" />
                     ) : (

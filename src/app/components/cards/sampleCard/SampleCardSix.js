@@ -1,10 +1,11 @@
-import React from 'react';
-import styled from 'styled-components';
-import propTypes from 'prop-types';
-import FeatherIcon from 'feather-icons-react';
-import { Link } from 'react-router-dom';
-import { Cards } from '../frame/cards-frame';
-import { Dropdown } from '../../dropdown/dropdown';
+import React from "react";
+import styled from "styled-components";
+import propTypes from "prop-types";
+import FeatherIcon from "feather-icons-react";
+// import { Link } from 'react-router-dom';
+import Link from "next/link";
+import { Cards } from "../frame/cards-frame";
+import { Dropdown } from "../../dropdown/dropdown";
 
 const CardWrapper = styled.figure`
   display: flex;
@@ -18,9 +19,9 @@ const CardWrapper = styled.figure`
     .more {
       position: absolute;
       top: 0px;
-      ${({ theme }) => (theme.rtl ? 'left' : 'right')}: 0;
+      ${({ theme }) => (theme.rtl ? "left" : "right")}: 0;
       a {
-        color: ${({ theme }) => theme['extra-light-color']};
+        color: ${({ theme }) => theme["extra-light-color"]};
       }
     }
     h2 {
@@ -29,7 +30,7 @@ const CardWrapper = styled.figure`
     }
     p {
       font-size: 14px;
-      color: ${({ theme }) => theme['light-color']};
+      color: ${({ theme }) => theme["light-color"]};
     }
   }
 `;
@@ -42,7 +43,7 @@ const Icon = styled.div`
   align-items: center;
   justify-content: center;
   background: ${({ theme, className }) => theme[`${className}-color`]};
-  ${({ theme }) => (theme.rtl ? 'margin-left' : 'margin-right')}: 20px;
+  ${({ theme }) => (theme.rtl ? "margin-left" : "margin-right")}: 20px;
 `;
 
 const SampleCardSix = ({ item }) => {
@@ -56,17 +57,17 @@ const SampleCardSix = ({ item }) => {
         <figcaption>
           <div className="more">
             <Dropdown
-              action={['click']}
+              action={["click"]}
               className="wide-dropdwon"
               content={
                 <>
-                  <Link to="#">Edit</Link>
-                  <Link to="#">Delete</Link>
-                  <Link to="#">View</Link>
+                  <Link href="#">Edit</Link>
+                  <Link href="#">Delete</Link>
+                  <Link href="#">View</Link>
                 </>
               }
             >
-              <Link to="#">
+              <Link href="#">
                 <FeatherIcon icon="more-horizontal" />
               </Link>
             </Dropdown>
@@ -86,10 +87,10 @@ SampleCardSix.propTypes = {
 SampleCardSix.defaultProps = {
   item: {
     id: 1,
-    title: '47',
-    content: 'Total tasks',
-    img: 'static/img/icon/1.svg',
-    className: 'primary',
+    title: "47",
+    content: "Total tasks",
+    img: "static/img/icon/1.svg",
+    className: "primary",
   },
 };
 

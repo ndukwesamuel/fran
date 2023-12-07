@@ -1,11 +1,12 @@
-import React from 'react';
-import styled from 'styled-components';
-import FeatherIcon from 'feather-icons-react';
-import { Link } from 'react-router-dom';
-import propTypes from 'prop-types';
-import { Dropdown } from '../../dropdown/dropdown';
-import { Button } from '../../buttons/buttons';
-import { Checkbox } from '../../checkbox/checkbox';
+import React from "react";
+import styled from "styled-components";
+import FeatherIcon from "feather-icons-react";
+// import { Link } from 'react-router-dom';
+import Link from "next/link";
+import propTypes from "prop-types";
+import { Dropdown } from "../../dropdown/dropdown";
+import { Button } from "../../buttons/buttons";
+import { Checkbox } from "../../checkbox/checkbox";
 
 const CardWrapper = styled.figure`
   background: #fff;
@@ -20,7 +21,7 @@ const CardWrapper = styled.figure`
     .card-short__content {
       padding: 0 25px;
       p {
-        color: ${({ theme }) => theme['gray-color']};
+        color: ${({ theme }) => theme["gray-color"]};
       }
     }
     .card-short__title {
@@ -29,20 +30,20 @@ const CardWrapper = styled.figure`
       margin-bottom: 18px;
       img {
         max-width: 50px;
-        ${({ theme }) => (theme.rtl ? 'margin-left' : 'margin-right')}: 20px;
+        ${({ theme }) => (theme.rtl ? "margin-left" : "margin-right")}: 20px;
       }
     }
     .card-short__bottom {
-      border-top: 1px solid ${({ theme }) => theme['border-color-light']};
+      border-top: 1px solid ${({ theme }) => theme["border-color-light"]};
       padding: 20px 25px 25px;
       .card-short-actions {
         .ant-btn-circle {
           border-radius: 42px;
-          ${({ theme }) => (theme.rtl ? 'margin-left' : 'margin-right')}: 16px;
+          ${({ theme }) => (theme.rtl ? "margin-left" : "margin-right")}: 16px;
           svg,
           img,
           i {
-            color: ${({ theme }) => theme['extra-light-color']};
+            color: ${({ theme }) => theme["extra-light-color"]};
           }
         }
         .content-action {
@@ -52,7 +53,7 @@ const CardWrapper = styled.figure`
             svg,
             img,
             i {
-              color: ${({ theme }) => theme['extra-light-color']};
+              color: ${({ theme }) => theme["extra-light-color"]};
             }
           }
         }
@@ -80,20 +81,20 @@ const CardWrapper = styled.figure`
           display: block !important;
           .ant-checkbox-checked {
             &:after {
-              border-color: ${({ theme }) => theme['success-color']};
+              border-color: ${({ theme }) => theme["success-color"]};
             }
             .ant-checkbox-inner {
-              border-color: ${({ theme }) => theme['success-color']};
-              background: ${({ theme }) => theme['success-color']};
+              border-color: ${({ theme }) => theme["success-color"]};
+              background: ${({ theme }) => theme["success-color"]};
               &:hover {
-                border-color: ${({ theme }) => theme['success-color']};
-                background: ${({ theme }) => theme['success-color']};
+                border-color: ${({ theme }) => theme["success-color"]};
+                background: ${({ theme }) => theme["success-color"]};
                 color: #fff;
               }
             }
           }
           span {
-            color: ${({ theme }) => theme['success-color']};
+            color: ${({ theme }) => theme["success-color"]};
           }
         }
       }
@@ -113,7 +114,11 @@ const SampleCardSeven = ({ item }) => {
         <div className="card-short__content">
           <p>{content}</p>
         </div>
-        <div className={installed ? 'card-short__bottom installed' : 'card-short__bottom'}>
+        <div
+          className={
+            installed ? "card-short__bottom installed" : "card-short__bottom"
+          }
+        >
           <div className="card-short-checkbox">
             <Checkbox defaultChecked>Installed</Checkbox>
           </div>
@@ -124,17 +129,17 @@ const SampleCardSeven = ({ item }) => {
               </Button>
               <div className="more">
                 <Dropdown
-                  action={['click']}
+                  action={["click"]}
                   className="wide-dropdwon"
                   content={
                     <>
-                      <Link to="#">Edit</Link>
-                      <Link to="#">Delete</Link>
-                      <Link to="#">View</Link>
+                      <Link href="#">Edit</Link>
+                      <Link href="#">Delete</Link>
+                      <Link href="#">View</Link>
                     </>
                   }
                 >
-                  <Link to="#">
+                  <Link href="#">
                     <FeatherIcon icon="more-horizontal" />
                   </Link>
                 </Dropdown>
@@ -146,17 +151,17 @@ const SampleCardSeven = ({ item }) => {
               </Button>
               <div className="more">
                 <Dropdown
-                  action={['click']}
+                  action={["click"]}
                   className="wide-dropdwon"
                   content={
                     <>
-                      <Link to="#">Edit</Link>
-                      <Link to="#">Delete</Link>
-                      <Link to="#">View</Link>
+                      <Link href="#">Edit</Link>
+                      <Link href="#">Delete</Link>
+                      <Link href="#">View</Link>
                     </>
                   }
                 >
-                  <Link to="#">
+                  <Link href="#">
                     <FeatherIcon icon="more-horizontal" />
                   </Link>
                 </Dropdown>
@@ -176,10 +181,11 @@ SampleCardSeven.propTypes = {
 SampleCardSeven.defaultProps = {
   item: {
     id: 1,
-    title: 'Adobe CC',
+    title: "Adobe CC",
     installed: true,
-    content: 'Lorem Ipsum is simply dummy text of the and the typesetting industry.',
-    img: 'static/img/icon/adobe.svg',
+    content:
+      "Lorem Ipsum is simply dummy text of the and the typesetting industry.",
+    img: "static/img/icon/adobe.svg",
   },
 };
 
